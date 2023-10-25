@@ -1,72 +1,41 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import { Layout } from './Layout';
-import { Searchbar } from './Searchbar/Searchbar';
-import { ImageGallery } from './ImageGallery/ImageGallery';
-import { fetchImages } from './pixabay-api';
-import { Button } from './Button/Button';
-import { Loader } from './Loader/Loader';
-import { Error } from './Error/Error';
-
-const per_page = 12;
+// import { Loader } from './Loader/Loader';
+// import { Error } from './Error/Error';
+import { fetchMovies } from '../tmdbAPI';
+import { Route, Routes } from 'react-router-dom';
+import Home from '../pages/Home';
+import Movies from '../pages/Movies';
+import MovieDetails from 'pages/MovieDetails';
+import NotFound from 'pages/NotFound';
+// import MovieDetails from '../pages/MovieDetails';
+import { Link, Navigation, Header} from './App.styled';
 
 export const App = () => {
-  const [images, setImages] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [query, setQuery] = useState('');
-  const [page, setPage] = useState(1);
-  const [loadMore, setLoadMore] = useState(false);
-
-  const handleSubmit = value => {
-    if (value === query) {
-      return;
+  async function getMovies() {
+    try {
+      const data = await fetchMovies();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
     }
-
-    setPage(1);
-    setImages([]);
-    setQuery(value);
-  };
-
-  const handleLoadMore = () => setPage(page + 1);
-
-  useEffect(() => {
-    if (query === '') {
-      return;
-    }
-
-    async function getImages() {
-      try {
-        setLoading(true);
-        setError(false);
-
-        const { hits, totalHits } = await fetchImages(query, page, per_page);
-
-        setImages(prevState => [...prevState, ...hits]);
-
-        if (totalHits < page * per_page) {
-          setLoadMore(false);
-        } else {
-          setLoadMore(true);
-        }
-      } catch (error) {
-        setImages([]);
-        setLoadMore(false);
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    getImages();
-  }, [page, query]);
+  }
+  getMovies();
 
   return (
     <Layout>
-      <Searchbar onSubmit={handleSubmit} />
-      {images.length > 0 && <ImageGallery images={images} />}
-      {(loading && <Loader />) ||
-        (loadMore && <Button handleClick={handleLoadMore} />)}
-      {error && <Error />}
+      <Header>
+        <Navigation>
+          <Link to="/">Home</Link>
+          <Link to="/movies">Movies</Link>
+        </Navigation>
+      </Header>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/movies" element={<Movies />} />
+        <Route path="/movies/:movieId" element={<MovieDetails />} />
+        <Route path="*" element={ <NotFound/>} />
+      </Routes>
     </Layout>
   );
 };
