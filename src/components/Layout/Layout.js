@@ -1,6 +1,7 @@
+import { Outlet } from 'react-router-dom';
 import { Link, Navigation, Header } from './Layout.styled';
 
-export const Layout = ({children}) => {
+export default function Layout () {
   return (
     <>
       <Header>
@@ -8,8 +9,8 @@ export const Layout = ({children}) => {
           <Link to="/">Home</Link>
           <Link to="/movies">Movies</Link>
         </Navigation>
-          </Header>
-          {children}
+      </Header>
+      <Outlet />
     </>
   );
 };
