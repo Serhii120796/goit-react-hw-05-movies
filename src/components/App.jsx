@@ -3,15 +3,16 @@ import { Layout } from './Layout';
 // import { Loader } from './Loader/Loader';
 // import { Error } from './Error/Error';
 import { Route, Routes } from 'react-router-dom';
-import Home from '../pages/Home';
+import Home from '../pages/Home/Home';
 import Movies from '../pages/Movies';
-import NotFound from 'pages/NotFound';
-import MovieDetails from '../pages/MovieDetails';
+import MovieDetails from '../pages/MovieDetails/MovieDetails';
+import NotFound from 'pages/NoteFound/NotFound';
+import { Cast } from './Cast/Cast';
+import { Reviews } from './Reviews/Reviews';
 import { Link, Navigation, Header} from './App.styled';
 
 export const App = () => {
  
-
   return (
     <Layout>
       <Header>
@@ -23,7 +24,10 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
-        <Route path="/movies/:movieId" element={<MovieDetails />} />
+        <Route path="/movies/:movieId" element={<MovieDetails />}>
+          <Route path="cast" element={<Cast />} />
+          <Route path="reviews" element={<Reviews/> } />
+        </Route>
         <Route path="*" element={ <NotFound/>} />
       </Routes>
     </Layout>

@@ -3,11 +3,16 @@ import { useEffect, useState } from 'react';
 import { fetchMoviesByQuery } from '../tmdbAPI';
 import { useSearchParams } from 'react-router-dom';
 import { SearchForm } from 'components/SearchForm/SearchForm';
+import { Main } from './Home/Home.styled';
+import { Loader } from '../components/Loader/Loader';
+import { Error } from '../components/Error/Error';
 
 export default function Movies() {
   const [moviesByQuery, setMoviesByQuery] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const handleSubmit = value => {
     setSearchParams({ query: value });
@@ -16,21 +21,27 @@ export default function Movies() {
   useEffect(() => {
     if (query === '') return;
 
+    setLoading(true);
+        setError(false);
     async function getMoviesByQuery() {
       try {
         const { results } = await fetchMoviesByQuery(query);
         setMoviesByQuery(results);
       } catch (error) {
-        console.log(error);
+        setError(error);
+      } finally {
+        setLoading(false)
       }
     }
     getMoviesByQuery();
   }, [query]);
 
   return (
-    <main>
+    <Main>
       <SearchForm onSubmit={handleSubmit} />
       {moviesByQuery.length > 0 && <MoviesList movies={moviesByQuery} />}
-    </main>
+      {loading && <Loader />}
+      {error && <Error/>}
+    </Main>
   );
 }
