@@ -1,7 +1,4 @@
-// import { useState, useEffect } from 'react';
 import { Layout } from './Layout';
-// import { Loader } from './Loader/Loader';
-// import { Error } from './Error/Error';
 import { Route, Routes } from 'react-router-dom';
 import Home from '../pages/Home/Home';
 import Movies from '../pages/Movies';
