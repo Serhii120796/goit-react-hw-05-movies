@@ -4,8 +4,8 @@ import Home from '../pages/Home/Home';
 import Movies from '../pages/Movies';
 import MovieDetails from '../pages/MovieDetails/MovieDetails';
 import NotFound from 'pages/NoteFound/NotFound';
-import { Cast } from './Cast/Cast';
-import { Reviews } from './Reviews/Reviews';
+import { Cast } from '../pages/Cast/Cast';
+import { Reviews } from '../pages/Reviews/Reviews';
 import { Link, Navigation, Header} from './App.styled';
 
 export const App = () => {

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchReviews } from 'tmdbAPI';
-import { Loader } from '../Loader/Loader';
-import { Error } from '../Error/Error';
-import { ReviewsList, AutorName, Info } from './Reviews.styled';
+import { Loader } from '../../components/Loader/Loader';
+import { Error } from '../../components/Error/Error';
+import { ReviewsList, ListItem, AutorName, Info } from './Reviews.styled';
 
 export const Reviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -32,10 +32,10 @@ export const Reviews = () => {
     <>
     <ReviewsList>
       {reviews.map(({ id, author, content }) => (
-        <li key={id}>
+        <ListItem key={id}>
           <AutorName>{author}</AutorName>
           <p>{content}</p>
-        </li>
+        </ListItem>
       ))}
       </ReviewsList>
       {loading && <Loader />}
