@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchReviews } from 'tmdbAPI';
-import { Loader } from '../../components/Loader/Loader';
-import { Error } from '../../components/Error/Error';
+import { Loader } from '../Loader/Loader';
+import { Error } from '../Error/Error';
 import { ReviewsList, ListItem, AutorName, Info } from './Reviews.styled';
 
-export default function Reviews () {
+export const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);

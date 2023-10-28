@@ -1,11 +1,11 @@
 import  Layout  from './Layout/Layout';
-import { Route, Routes } from 'react-router-dom';
 import Home from 'pages/Home/Home';
 import Movies from 'pages/Movies';
 import MovieDetails from 'pages/MovieDetails/MovieDetails';
 import NotFound from 'pages/NoteFound/NotFound';
-import Cast from 'pages/Cast/Cast';
-import Reviews from 'pages/Reviews/Reviews';
+import { Route, Routes } from 'react-router-dom';
+import {Cast }from './Cast/Cast';
+import {Reviews} from './Reviews/Reviews';
 
 export const App = () => {
   return (

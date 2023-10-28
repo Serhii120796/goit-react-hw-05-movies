@@ -1,16 +1,14 @@
 import { Outlet } from 'react-router-dom';
-import { Link, Navigation, Header } from './Layout.styled';
+import { Header } from './Layout.styled';
+import { Navigation } from '../Navigation/Navigation';
 
-export default function Layout () {
+export default function Layout() {
   return (
     <>
       <Header>
-        <Navigation>
-          <Link to="/">Home</Link>
-          <Link to="/movies">Movies</Link>
-        </Navigation>
+        <Navigation />
       </Header>
       <Outlet />
     </>
   );
-};
+}

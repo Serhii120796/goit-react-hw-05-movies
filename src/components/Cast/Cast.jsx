@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchCast } from 'tmdbAPI';
 import { CasList, CastItem, InfoWrapper, Name, Character } from './Cast.styled';
-import { Loader } from '../../components/Loader/Loader';
-import { Error } from '../../components/Error/Error';
+import { Loader } from '../Loader/Loader';
+import { Error } from '../Error/Error';
 
 const defaultImg =
   'https://cdn.pixabay.com/photo/2015/04/18/11/03/profile-728591_1280.jpg';
 
-export default function Cast() {
+export const Cast = () => {
   const [cast, setCast] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
