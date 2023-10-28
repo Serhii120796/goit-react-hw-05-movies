@@ -5,7 +5,7 @@ import { Loader } from '../../components/Loader/Loader';
 import { Error } from '../../components/Error/Error';
 import { ReviewsList, ListItem, AutorName, Info } from './Reviews.styled';
 
-export const Reviews = () => {
+export default function Reviews () {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);

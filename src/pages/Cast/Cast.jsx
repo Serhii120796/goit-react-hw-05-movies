@@ -8,7 +8,7 @@ import { Error } from '../../components/Error/Error';
 const defaultImg =
   'https://cdn.pixabay.com/photo/2015/04/18/11/03/profile-728591_1280.jpg';
 
-export const Cast = () => {
+export default function Cast() {
   const [cast, setCast] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
