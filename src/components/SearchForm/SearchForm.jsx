@@ -1,4 +1,4 @@
-import {Form, Input} from './SearchForm.styled'
+import { Form, Input } from './SearchForm.styled';
 
 export const SearchForm = ({ onSubmit }) => (
   <Form
@@ -12,7 +12,7 @@ export const SearchForm = ({ onSubmit }) => (
       type="text"
       autoComplete="off"
       autoFocus
-      //   placeholder="Search images and photos"
+      placeholder=""
       name="input"
       required
     />
