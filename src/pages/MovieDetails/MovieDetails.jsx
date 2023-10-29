@@ -1,17 +1,18 @@
-import { useParams, Outlet } from 'react-router-dom';
+import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { fetchMovieByID } from '../../tmdbAPI';
 import {
   MainData,
+  BackLink,
   DataWrapper,
   GenreList,
   AddInfWrapper,
   LinkItem,
-  Link,
 } from './MovieDetails.styled';
 import { Loader } from '../../components/Loader/Loader';
 import { Error } from '../../components/Error/Error';
 import { BsArrowLeft } from 'react-icons/bs';
+import { IconContext } from 'react-icons';
 
 const defaultImg = 'https://i.ytimg.com/vi/G5bAHTYyNNc/sddefault.jpg';
 
@@ -20,6 +21,7 @@ export default function MovieDetails() {
   const { movieId } = useParams();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     if (!movieId) return;
@@ -44,7 +46,12 @@ export default function MovieDetails() {
   return (
     movieDetails && (
       <main>
-        <BsArrowLeft/>
+        <BackLink to={location.state?.from ?? '/'}>
+          <IconContext.Provider value={{ size: '1em' }}>
+          <BsArrowLeft />
+        </IconContext.Provider>
+          Go back
+        </BackLink>
         <MainData>
           <img
             src={
@@ -73,12 +80,12 @@ export default function MovieDetails() {
         <AddInfWrapper>
           <p>Additional information</p>
           <ul>
-            <LinkItem>
-              <Link to="cast">Cast</Link>
-            </LinkItem>
-            <LinkItem>
-              <Link to="reviews">Reviews</Link>
-            </LinkItem>
+            <li>
+              <LinkItem to="cast">Cast</LinkItem>
+            </li>
+            <li>
+              <LinkItem to="reviews">Reviews</LinkItem>
+            </li>
           </ul>
         </AddInfWrapper>
         {loading && <Loader />}

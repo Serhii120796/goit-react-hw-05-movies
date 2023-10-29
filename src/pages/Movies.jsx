@@ -9,8 +9,8 @@ import { Error } from '../components/Error/Error';
 
 export default function Movies() {
   const [moviesByQuery, setMoviesByQuery] = useState([]);
-  const [searchParams] = useSearchParams();
-  const query = searchParams.get('query') ?? '';
+  const [params] = useSearchParams();
+  const query = params.get('query') ?? '';
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
