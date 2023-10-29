@@ -11,6 +11,7 @@ import {
 } from './MovieDetails.styled';
 import { Loader } from '../../components/Loader/Loader';
 import { Error } from '../../components/Error/Error';
+import { BsArrowLeft } from 'react-icons/bs';
 
 const defaultImg = 'https://i.ytimg.com/vi/G5bAHTYyNNc/sddefault.jpg';
 
@@ -43,6 +44,7 @@ export default function MovieDetails() {
   return (
     movieDetails && (
       <main>
+        <BsArrowLeft/>
         <MainData>
           <img
             src={
