@@ -7,8 +7,8 @@ padding: 0 30px;
 `;
 
 export const Link = styled(NavLink)`
-// display: block;
 padding: 20px 0;
+color: ${p => p.theme.colors.black};
 
 & + & {
     margin-left: 20px;

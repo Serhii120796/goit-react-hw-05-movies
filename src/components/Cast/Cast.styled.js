@@ -9,8 +9,17 @@ padding: 10px 30px;
 `;
 
 export const CastItem = styled.li`
-width: 200px;
-margin: 0 auto;
+display: flex;
+flex-direction: column;
+    justify-content: space-between;
+width: calc((100vw - 177px) / 6);
+
+border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+`;
+
+export const Image = styled.img`
+width: 100%;
 `;
 
 export const InfoWrapper = styled.div`

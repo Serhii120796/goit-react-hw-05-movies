@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchCast } from 'tmdbAPI';
-import { CasList, CastItem, InfoWrapper, Name, Character } from './Cast.styled';
+import { CasList, CastItem, Image, InfoWrapper, Name, Character } from './Cast.styled';
 import { Loader } from '../Loader/Loader';
 import { Error } from '../Error/Error';
 
@@ -35,7 +35,7 @@ export const Cast = () => {
       {(cast.length > 0) && <CasList>
         {cast.map(({ cast_id, name, profile_path, character }) => (
           <CastItem key={cast_id}>
-            <img
+            <Image
               src={
                 profile_path
                   ? `https://image.tmdb.org/t/p/w200${profile_path}`

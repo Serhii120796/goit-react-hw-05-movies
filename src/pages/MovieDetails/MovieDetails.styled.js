@@ -13,6 +13,7 @@ margin-left: 30px;
 border: 1px solid #000000;
 border-radius: 5px;
 font-size: 10px;
+color: ${p => p.theme.colors.black};
 
 &:hover, &:focus {
     background-color: #cccccc;
@@ -52,6 +53,7 @@ box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
 
 export const LinkItem = styled(NavLink)`
 font-weight: 600;
+color: ${p => p.theme.colors.black};
 
 &.active {
     color: ${p => p.theme.colors.error};
