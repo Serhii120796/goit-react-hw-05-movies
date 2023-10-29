@@ -20,7 +20,7 @@ export const Cast = () => {
         setLoading(true);
         setError(false);
         const { cast } = await fetchCast(movieId);
-        setCast(cast);
+        if(cast.length > 0) setCast(cast);
       } catch (error) {
         setError(error);
       } finally {
@@ -32,7 +32,7 @@ export const Cast = () => {
 
   return (
     <>
-      <CasList>
+      {(cast.length > 0) && <CasList>
         {cast.map(({ cast_id, name, profile_path, character }) => (
           <CastItem key={cast_id}>
             <img
@@ -49,7 +49,7 @@ export const Cast = () => {
             </InfoWrapper>
           </CastItem>
         ))}
-      </CasList>
+      </CasList>}
       {loading && <Loader />}
       {error && <Error />}
     </>
