@@ -9,14 +9,10 @@ import { Error } from '../components/Error/Error';
 
 export default function Movies() {
   const [moviesByQuery, setMoviesByQuery] = useState([]);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-
-  const handleSubmit = value => {
-    setSearchParams({ query: value });
-  };
 
   useEffect(() => {
     if (query === '') return;
@@ -38,7 +34,7 @@ export default function Movies() {
 
   return (
     <Main>
-      <SearchForm onSubmit={handleSubmit} />
+      <SearchForm />
       {moviesByQuery.length > 0 && <MoviesList movies={moviesByQuery} />}
       {loading && <Loader />}
       {error && <Error/>}
