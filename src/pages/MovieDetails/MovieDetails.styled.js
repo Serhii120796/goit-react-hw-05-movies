@@ -1,9 +1,26 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { BsArrowLeft } from 'react-icons/bs';
+
+export const Main = styled.main`
+padding-top: 10px;
+`;
 
 export const BackLink = styled(NavLink)`
-display: block;
-padding: 10px 30px 0;
+display: inline-block;
+padding: 2px 4px;
+margin-left: 30px;
+border: 1px solid #000000;
+border-radius: 5px;
+font-size: 10px;
+
+&:hover, &:focus {
+    background-color: #cccccc;
+}
+`;
+
+export const Arrow = styled(BsArrowLeft)`
+display: inline-block;
 `;
 
 export const MainData = styled.div`

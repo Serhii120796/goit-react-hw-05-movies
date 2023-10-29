@@ -2,8 +2,10 @@ import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { fetchMovieByID } from '../../tmdbAPI';
 import {
+  Main,
   MainData,
   BackLink,
+  Arrow,
   DataWrapper,
   GenreList,
   AddInfWrapper,
@@ -11,8 +13,8 @@ import {
 } from './MovieDetails.styled';
 import { Loader } from '../../components/Loader/Loader';
 import { Error } from '../../components/Error/Error';
-import { BsArrowLeft } from 'react-icons/bs';
-import { IconContext } from 'react-icons';
+
+
 
 const defaultImg = 'https://i.ytimg.com/vi/G5bAHTYyNNc/sddefault.jpg';
 
@@ -45,12 +47,9 @@ export default function MovieDetails() {
 
   return (
     movieDetails && (
-      <main>
+      <Main>
         <BackLink to={location.state?.from ?? '/'}>
-          <IconContext.Provider value={{ size: '1em' }}>
-          <BsArrowLeft />
-        </IconContext.Provider>
-          Go back
+          <Arrow/>  Go back
         </BackLink>
         <MainData>
           <img
@@ -91,7 +90,7 @@ export default function MovieDetails() {
         {loading && <Loader />}
         {error && <Error />}
         <Outlet />
-      </main>
+      </Main>
     )
   );
 }
