@@ -18,16 +18,15 @@ const theme = {
   transition: {
     standart: '250ms cubic-bezier(0.4, 0, 0.2, 1)',
   },
-  
 };
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename='/goit-react-hw-05-movies'>
-    <ThemeProvider theme={theme}>
-      <App />
-      <GlobalStyle/>
-    </ThemeProvider>
+    <BrowserRouter basename="/goit-react-hw-05-movies">
+      <ThemeProvider theme={theme}>
+        <App />
+        <GlobalStyle />
+      </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

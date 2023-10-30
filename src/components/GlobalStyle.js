@@ -54,5 +54,3 @@ a {
   text-decoration: none;
 }
 `;
-
-

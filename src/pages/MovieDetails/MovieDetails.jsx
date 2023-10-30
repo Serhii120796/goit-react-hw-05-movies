@@ -14,9 +14,8 @@ import {
 import { Loader } from '../../components/Loader/Loader';
 import { Error } from '../../components/Error/Error';
 
-
-
 const defaultImg = 'https://i.ytimg.com/vi/G5bAHTYyNNc/sddefault.jpg';
+let locationFrom = '';
 
 export default function MovieDetails() {
   const [movieDetails, setMovieDetails] = useState('');
@@ -24,6 +23,7 @@ export default function MovieDetails() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const location = useLocation();
+  locationFrom = location.state?.from ?? locationFrom;
 
   useEffect(() => {
     if (!movieId) return;
@@ -48,8 +48,8 @@ export default function MovieDetails() {
   return (
     movieDetails && (
       <Main>
-        <BackLink to={location.state?.from ?? '/'}>
-          <Arrow/>  Go back
+        <BackLink to={locationFrom || '/'}>
+          <Arrow /> Go back
         </BackLink>
         <MainData>
           <img

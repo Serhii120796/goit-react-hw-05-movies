@@ -21,7 +21,7 @@ export const Reviews = () => {
       } catch (error) {
         setError(error);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
     }
 
@@ -30,18 +30,18 @@ export const Reviews = () => {
 
   return reviews.length > 0 ? (
     <>
-    <ReviewsList>
-      {reviews.map(({ id, author, content }) => (
-        <ListItem key={id}>
-          <AutorName>{author}</AutorName>
-          <p>{content}</p>
-        </ListItem>
-      ))}
+      <ReviewsList>
+        {reviews.map(({ id, author, content }) => (
+          <ListItem key={id}>
+            <AutorName>{author}</AutorName>
+            <p>{content}</p>
+          </ListItem>
+        ))}
       </ReviewsList>
       {loading && <Loader />}
-      {error && <Error/>}
+      {error && <Error />}
     </>
   ) : (
     <Info>We don't have any reviews for this movie.</Info>
-  )
+  );
 };

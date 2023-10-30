@@ -18,7 +18,7 @@ export default function Movies() {
     if (query === '') return;
 
     setLoading(true);
-        setError(false);
+    setError(false);
     async function getMoviesByQuery() {
       try {
         const { results } = await fetchMoviesByQuery(query);
@@ -26,7 +26,7 @@ export default function Movies() {
       } catch (error) {
         setError(error);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
     }
     getMoviesByQuery();
@@ -37,7 +37,7 @@ export default function Movies() {
       <SearchForm />
       {moviesByQuery.length > 0 && <MoviesList movies={moviesByQuery} />}
       {loading && <Loader />}
-      {error && <Error/>}
+      {error && <Error />}
     </Main>
   );
 }

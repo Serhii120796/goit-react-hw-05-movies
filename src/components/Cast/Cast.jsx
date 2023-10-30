@@ -1,7 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchCast } from 'tmdbAPI';
-import { CasList, CastItem, Image, InfoWrapper, Name, Character } from './Cast.styled';
+import {
+  CasList,
+  CastItem,
+  Image,
+  InfoWrapper,
+  Name,
+  Character,
+} from './Cast.styled';
 import { Loader } from '../Loader/Loader';
 import { Error } from '../Error/Error';
 
@@ -20,7 +27,7 @@ export const Cast = () => {
         setLoading(true);
         setError(false);
         const { cast } = await fetchCast(movieId);
-        if(cast.length > 0) setCast(cast);
+        if (cast.length > 0) setCast(cast);
       } catch (error) {
         setError(error);
       } finally {
@@ -32,24 +39,26 @@ export const Cast = () => {
 
   return (
     <>
-      {(cast.length > 0) && <CasList>
-        {cast.map(({ cast_id, name, profile_path, character }) => (
-          <CastItem key={cast_id}>
-            <Image
-              src={
-                profile_path
-                  ? `https://image.tmdb.org/t/p/w200${profile_path}`
-                  : defaultImg
-              }
-              alt={name}
-            />
-            <InfoWrapper>
-              <Name>{name}</Name>
-              <Character>{`Character: ${character}`}</Character>
-            </InfoWrapper>
-          </CastItem>
-        ))}
-      </CasList>}
+      {cast.length > 0 && (
+        <CasList>
+          {cast.map(({ cast_id, name, profile_path, character }) => (
+            <CastItem key={cast_id}>
+              <Image
+                src={
+                  profile_path
+                    ? `https://image.tmdb.org/t/p/w200${profile_path}`
+                    : defaultImg
+                }
+                alt={name}
+              />
+              <InfoWrapper>
+                <Name>{name}</Name>
+                <Character>{`Character: ${character}`}</Character>
+              </InfoWrapper>
+            </CastItem>
+          ))}
+        </CasList>
+      )}
       {loading && <Loader />}
       {error && <Error />}
     </>

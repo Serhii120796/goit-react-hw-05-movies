@@ -20,7 +20,7 @@ export default function Home() {
       } catch (error) {
         setError(error);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
     }
 
@@ -32,7 +32,7 @@ export default function Home() {
       <Title>Trending today</Title>
       {trendingMovies.length > 0 && <MoviesList movies={trendingMovies} />}
       {loading && <Loader />}
-      {error && <Error/>}
+      {error && <Error />}
     </Main>
   );
 }
