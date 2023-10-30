@@ -10,9 +10,10 @@ gap: 20px;
 export const ListItem = styled.li`
 display: flex;
 width: calc((100vw - 160px) / 5);
+
+border-radius: 5px;
     box-shadow: 0 2px 8px rgba(0,0,0,.1);
-    border-radius: 5px;
-justify-content: space-between;
+    overflow: hidden;
 `; 
 
 export const LinkItem = styled(Link)`
@@ -29,6 +30,7 @@ object-fit: cover;
 
 export const Title = styled.h2`
 text-align: center;
+margin: auto;
 padding: 10px 0;
 font-size: 16px;
 color: ${p => p.theme.colors.black}
